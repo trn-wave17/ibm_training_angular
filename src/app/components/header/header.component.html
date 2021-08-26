@@ -1,0 +1,5 @@
+<header>
+    <h1>Angular Training</h1>
+    <app-button color='red' text='Load Employees' (buttonClicked) = "loadEmployees()"></app-button>
+    <app-employee-item *ngFor = "let emp of employees" [employee]="emp"></app-employee-item>
+</header>

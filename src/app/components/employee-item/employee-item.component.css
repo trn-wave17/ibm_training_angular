@@ -1,0 +1,11 @@
+.employee{
+    background: #f4f4f4;
+    cursor: pointer;
+    padding: 10px;
+}
+
+.employee h3{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
