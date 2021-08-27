@@ -7,19 +7,23 @@ import { HeaderComponent } from './components/header/header.component';
 import { ButtonComponent } from './components/button/button.component';
 import { EmployeeService } from './services/employee.service';
 import { EmployeeItemComponent } from './components/employee-item/employee-item.component';
-import { HttpClientModule } from '@angular/common/http'
+import { HttpClientModule } from '@angular/common/http';
+import { EmployeesComponent } from './components/employees/employees.component'
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     ButtonComponent,
-    EmployeeItemComponent
+    EmployeeItemComponent,
+    EmployeesComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    HttpClientModule
+    HttpClientModule,
+    FontAwesomeModule
   ],
   providers: [
     EmployeeService

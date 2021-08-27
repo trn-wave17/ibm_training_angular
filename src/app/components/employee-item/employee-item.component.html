@@ -1,4 +1,6 @@
-<div class="employee">
-    <h3>{{employee.name}}</h3>
+<div [ngClass]="{active: employee.active}" class="employee" (dblclick)="switchActiveness()">
+    <h3>{{employee.name}}
+        <fa-icon [ngStyle]="{'color':'red'}" [icon]="faTimes" (click)="deleteClicked()"></fa-icon>
+    </h3>
     <p>{{employee.email}}</p>
 </div>

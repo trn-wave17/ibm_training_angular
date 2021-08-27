@@ -1,0 +1,5 @@
+<app-employee-item *ngFor = "let employee of employees" 
+    [employee]="employee" 
+    (switch)="switchActiveness(employee)" 
+    (delete)="deleteEmployee(employee)">
+</app-employee-item>

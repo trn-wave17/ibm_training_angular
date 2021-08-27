@@ -1,5 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Employee } from 'src/app/Employee';
+import { faTimes } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-employee-item',
@@ -8,11 +9,25 @@ import { Employee } from 'src/app/Employee';
 })
 export class EmployeeItemComponent implements OnInit {
 
-  @Input() employee: Employee = {name:"Default","email":"default@gmail.com",registered:true};
+  @Input() employee: Employee = {name:"Default","email":"default@gmail.com",active:true};
+
+  @Output() switch = new EventEmitter();
+
+  @Output() delete = new EventEmitter();
+
+  faTimes = faTimes;
 
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  switchActiveness(){
+    this.switch.emit();
+  }
+
+  deleteClicked(){
+    this.delete.emit();
   }
 
 }
