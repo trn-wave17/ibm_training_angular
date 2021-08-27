@@ -31,12 +31,16 @@ export class EmployeeService {
     return this.httpClient.get<Employee[]>(this.apiUrl).toPromise();
   }
 
-  updateEmployeeData(employee: Employee): Observable<Employee[]>{
+  updateEmployeeData(employee: Employee): Observable<any>{
     return this.httpClient.put<Employee[]>(`${this.apiUrl}/${employee.id}`, employee, httpOptions);
   }
 
-  deleteEmployeeData(employee:Employee){
+  deleteEmployeeData(employee:Employee): Observable<any>{
     return this.httpClient.delete(`${this.apiUrl}/${employee.id}`);
+  }
+
+  addEmployeeData(employee:Employee): Observable<Employee>{
+    return this.httpClient.post<Employee>(this.apiUrl, employee, httpOptions);
   }
 
 }

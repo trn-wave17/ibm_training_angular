@@ -1,0 +1,15 @@
+<form *ngIf="showForm" class="add-employee-form" (ngSubmit)="onFormSubmit()">
+    <div class="form-control">
+        <label for="name">Name</label>
+        <input type="text" name="name" id="emp-name" placeholder="Add name" [(ngModel)]="name"/>
+    </div>
+    <div class="form-control">
+        <label for="email">EmailId</label>
+        <input type="text" name="email" id="emp-email" placeholder="Add email id" [(ngModel)]="email"/>
+    </div>
+    <div class="form-control form-control-check">
+        <label for="active">Active</label>
+        <input type="checkbox" name="active" id="emp-active" [(ngModel)]="active" />
+    </div>
+    <input type="submit" value="Add Employee" class="btn btn-block"/>
+</form>

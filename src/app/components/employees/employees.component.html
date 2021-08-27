@@ -1,3 +1,4 @@
+<app-add-employee (add)="addEmployee($event)"></app-add-employee>
 <app-employee-item *ngFor = "let employee of employees" 
     [employee]="employee" 
     (switch)="switchActiveness(employee)" 

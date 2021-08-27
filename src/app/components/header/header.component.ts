@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ToggleService } from 'src/app/services/toggle.service';
 
 @Component({
   selector: 'app-header',
@@ -6,12 +7,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-  constructor() { }
+
+  isFormVisible:boolean = false;
+
+  constructor(private toggleService:ToggleService) { }
 
   ngOnInit(): void {
   }
 
   toggleAddEmployee(){
-    
+    this.isFormVisible = !this.isFormVisible;
+    this.toggleService.toggleForm();
   }
 }

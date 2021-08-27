@@ -46,4 +46,10 @@ export class EmployeesComponent implements OnInit {
     })
   }
 
+  addEmployee(employee:Employee){
+   this.employeeService.addEmployeeData(employee).subscribe((emp)=>{
+     this.employees.push(emp);
+   })
+  }
+
 }

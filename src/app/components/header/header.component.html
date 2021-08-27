@@ -1,4 +1,10 @@
 <header>
     <h1 [ngStyle]="{'display':'inline'}">Employee Service</h1>
-    <app-button color='green' text='Add Employee' (buttonClicked) = "toggleAddEmployee()"></app-button>
+    <div class='btnAlign'>
+        <app-button 
+            color="{{isFormVisible?'red':'green'}}" 
+            text="{{isFormVisible?'Close':'Add Employee'}}" 
+            (buttonClicked) = "toggleAddEmployee()">
+        </app-button>
+    </div>
 </header>
