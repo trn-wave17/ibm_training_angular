@@ -1,19 +1,40 @@
-import { Component, OnInit } from '@angular/core';
+import { newArray } from '@angular/compiler/src/util';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { counter } from '@fortawesome/fontawesome-svg-core';
 import { Employee } from 'src/app/Employee';
 import { EmployeeService } from 'src/app/services/employee.service';
+
 
 @Component({
   selector: 'app-employees',
   templateUrl: './employees.component.html',
-  styleUrls: ['./employees.component.css']
+  styleUrls: ['./employees.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class EmployeesComponent implements OnInit {
   employees: Employee[] = [];
-  constructor(private employeeService: EmployeeService) {
+  constructor(private employeeService: EmployeeService, private cdr: ChangeDetectorRef) {
    }
 
+  options: string[] = ['Ankit','Hardik','Namit','Vaibhav','Raunaq'];
+  filteredOptions = this.options;
+  counter: number = 0;
   ngOnInit(): void {
     this.loadEmployees();
+    let obj = this;
+    setInterval(function(){
+      obj.counter++;
+     // obj.employees = [{name:'Divyansh',email:'divyansh@gmail.com',active:true}];
+      obj.employees[0].name = `Divyansh${obj.counter}`;
+      obj.cdr.markForCheck();
+    },1000)
+
+    setTimeout(function(){
+      obj.cdr.detach();
+    },10000);
+    setTimeout(function(){
+      obj.cdr.reattach();
+    },20000);
   }
 
   loadEmployees(){

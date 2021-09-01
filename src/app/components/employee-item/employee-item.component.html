@@ -1,6 +1,7 @@
-<div [ngClass]="{active: employee.active}" class="employee" (dblclick)="switchActiveness()">
-    <h3>{{employee.name}}
+<div #employeeItem appEmployeeItemHover [appEmployeeItemColor]="employee.active" [ngClass]="{active: employee.active}" class="employee" (dblclick)="switchActiveness()">
+    <h3>{{employee.name | employeeTitle:employee.email:employee.active}}
         <fa-icon [ngStyle]="{'color':'red'}" [icon]="faTimes" (click)="deleteClicked()"></fa-icon>
     </h3>
-    <p>{{employee.email}}</p>
+    <p>{{1.23 | number:'2.3-4'}}</p>
+    <p>{{employee | json}}</p>
 </div>

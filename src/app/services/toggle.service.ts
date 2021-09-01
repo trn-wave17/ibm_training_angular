@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable, Subject } from 'rxjs';
+import { BehaviorSubject, Observable, Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -7,7 +7,8 @@ import { Observable, Subject } from 'rxjs';
 export class ToggleService {
   
   private showForm:boolean = false;
-  private subject = new Subject<boolean>();
+  public subject = new BehaviorSubject<boolean>(false);
+  //public subject = new Subject<boolean>();
   
   constructor() { }
 

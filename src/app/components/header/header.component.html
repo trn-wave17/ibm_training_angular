@@ -1,6 +1,6 @@
 <header>
     <h1 [ngStyle]="{'display':'inline'}">Employee Service</h1>
-    <div class='btnAlign'>
+    <div class='btnAlign' *ngIf="hasRoute('/')">
         <app-button 
             color="{{isFormVisible?'red':'green'}}" 
             text="{{isFormVisible?'Close':'Add Employee'}}" 
@@ -8,3 +8,7 @@
         </app-button>
     </div>
 </header>
+
+<!--<mat-toolbar color="primary">
+    <span>Employee Service</span>
+</mat-toolbar>-->

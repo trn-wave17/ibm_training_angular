@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { Employee } from 'src/app/Employee';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
 
@@ -7,7 +7,7 @@ import { faTimes } from '@fortawesome/free-solid-svg-icons';
   templateUrl: './employee-item.component.html',
   styleUrls: ['./employee-item.component.css']
 })
-export class EmployeeItemComponent implements OnInit {
+export class EmployeeItemComponent implements OnInit, AfterViewInit {
 
   @Input() employee: Employee = {name:"Default","email":"default@gmail.com",active:true};
 
@@ -15,12 +15,22 @@ export class EmployeeItemComponent implements OnInit {
 
   @Output() delete = new EventEmitter();
 
+  @ViewChild('employeeItem') 
+  employeeItem: ElementRef | undefined;
+
   faTimes = faTimes;
 
-  constructor() { }
+  constructor(private changeDetectorRef: ChangeDetectorRef) { }
+  
+  ngAfterViewInit(): void {
+    if(this.employeeItem)
+        this.employeeItem.nativeElement.style.color = 'red';
+  }
 
   ngOnInit(): void {
   }
+
+
 
   switchActiveness(){
     this.switch.emit();

@@ -12,7 +12,7 @@ export class AddEmployeeComponent implements OnInit, OnDestroy {
   name:string='';
   email:string='';
   active:boolean = false;
-  showForm:boolean = false;
+  showForm:boolean = true;
   subscription: Subscription = Subscription.EMPTY;
 
   @Output() add = new EventEmitter<Employee>();
@@ -24,7 +24,7 @@ export class AddEmployeeComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.subscription = this.toggleService.onToggle().subscribe((response:boolean)=>{
+    this.subscription = this.toggleService.subject.subscribe((response:boolean)=>{
       this.showForm = response;
     })
   }

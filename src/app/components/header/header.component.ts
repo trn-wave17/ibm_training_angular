@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ToggleService } from 'src/app/services/toggle.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -10,7 +11,7 @@ export class HeaderComponent implements OnInit {
 
   isFormVisible:boolean = false;
 
-  constructor(private toggleService:ToggleService) { }
+  constructor(private toggleService:ToggleService, private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -18,5 +19,9 @@ export class HeaderComponent implements OnInit {
   toggleAddEmployee(){
     this.isFormVisible = !this.isFormVisible;
     this.toggleService.toggleForm();
+  }
+
+  hasRoute(route: string){
+    return this.router.url === route;
   }
 }

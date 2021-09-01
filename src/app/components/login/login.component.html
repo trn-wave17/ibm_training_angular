@@ -1,0 +1,21 @@
+<form [formGroup]=loginForm (ngSubmit)="requestLogin()">
+    <div class="form-control">
+        <label for="username">Username</label>
+        <input type="text" placeholder="Enter your username" formControlName="username"/>
+        <small class="form-error" *ngIf="username?.invalid && (username?.dirty || username?.touched)">Username can't be empty</small>
+    </div>
+    <div class="form-control">
+        <label for="password">Password</label>
+        <input type="password" placeholder="Enter your password" formControlName="password"/>
+        <small class="form-error" *ngIf="password?.invalid && (password?.dirty || password?.touched)">
+            <small *ngIf="password?.errors?.required">Password can't be empty!!</small>
+            <small *ngIf="password?.errors?.minlength">Password must contain atleast 4 characters</small>
+        </small>
+        
+    </div>
+    <button type="submit" class="btn btn-block">Login</button>
+</form>
+
+<div [ngStyle]="{'float':'right'}" >
+    <a routerLink="/">Back</a>
+</div>
